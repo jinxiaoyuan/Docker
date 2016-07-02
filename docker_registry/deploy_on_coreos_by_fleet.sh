@@ -10,7 +10,7 @@ domain=${1:-pool.docker.gzts.com}
 
 base_dir=$(cd $(dirname $0)&&pwd)
 cd ${base_dir}
-mkdir data
+mkdir -p data
 
 serv_file="docker_registry@.service"
 serv_inst=${serv_file/@/@${domain}}
@@ -29,4 +29,5 @@ scp -r -o StrictHostKeyChecking=no ${base_dir}/* ${machine_ip}:${app_dir}/
 fleetctl start ${serv_inst}
 
 echo "Docker registry instance(${serv_inst}) had deployed on server ${machine_ip}"
+echo "You can manage the registry service using fleetctl from mow on."
 echo "You mush bind your domain(${domain}) to server(${machine_ip}) to use the registry"

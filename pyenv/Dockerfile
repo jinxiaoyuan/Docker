@@ -2,8 +2,8 @@ FROM daocloud.io/centos:6.6
 
 MAINTAINER Jin Xiaoyuan <shonnchin@gmail.com>
 
-RUN yum groupinstall -y 'Development tools' && \
-yum install -y readline readline-devel readline-static \
+# RUN yum groupinstall -y 'Development tools' && \
+RUN yum install -y readline readline-devel readline-static \
 openssl openssl-devel openssl-static sqlite-devel \
 memcached libmemcached-devel libmemcached \
 libffi-devel libffi \

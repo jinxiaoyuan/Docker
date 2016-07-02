@@ -17,5 +17,5 @@ ExecStart=/usr/bin/docker run -p 443:5000 -v ${BASEDIR}:/opt/registry --env-file
 ExecStop=/usr/bin/docker kill %i
 [X-Fleet]
 # Don't schedule on the same machine as other registry instances
-# Conflicts=%p@*.service
-MachineID=72f6e393
+Conflicts=%p@*.service
+#MachineID=72f6e393
