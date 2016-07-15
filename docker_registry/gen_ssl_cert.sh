@@ -1,4 +1,5 @@
 #!/bin/bash
+# Create by Jin Xiaoyuan at 2016-07-13 14:36
 
 if [[ x$1 == "x" ]]; then
     echo "Notice: domain_or_ip not specified, using default: pool.docker.gzts.com"
@@ -75,9 +76,9 @@ EOF
 # EOF
 
     # Generate Keypair
-    openssl genrsa -out ${DIR_OUT}/cert-key.pem 2048
-    openssl req -new -sha256 -key ${DIR_OUT}/cert-key.pem -out ${DIR_OUT}/cert.csr -config ${SSLCNF}
-    openssl x509 -req -sha256 -in ${DIR_OUT}/cert.csr -CA ${ca_file} -CAkey ${ca_key} -CAcreateserial -out ${DIR_OUT}/cert.crt -days 3650 -extensions v3_req -extfile ${SSLCNF}
+    openssl genrsa -out ${DIR_OUT}/${com_name}-key.pem 2048
+    openssl req -new -sha256 -key ${DIR_OUT}/${com_name}-key.pem -out ${DIR_OUT}/${com_name}.csr -config ${SSLCNF}
+    openssl x509 -req -sha256 -in ${DIR_OUT}/${com_name}.csr -CA ${ca_file} -CAkey ${ca_key} -CAcreateserial -out ${DIR_OUT}/${com_name}.crt -days 3650 -extensions v3_req -extfile ${SSLCNF}
     rm -f ${SSLCNF}
 }
 
